@@ -1,0 +1,98 @@
+header {
+    background-color: darkblue;
+    color: yellow;
+    text-shadow: 2px 2px red;
+    font-size: 300%;
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 0 auto 20px auto;
+    padding: 20px;
+    width: 600px;
+}
+    .background {
+        background: url("../images/background.jpg")
+    }
+    .instructions {
+        background-color: lightgray;
+        font-size: 120%;
+        margin: 5px auto 5px auto;
+        padding: 10px;
+        width: 700px;
+    }
+    .playBox {
+        background-color: black;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin: 20px auto 10px auto;
+        padding: 10px;
+        width: 758px;
+        height: 370px;
+    }
+    .player {
+        background-color: orangered;
+        float: left;
+        text-align: center;
+        border: 1px solid black;
+        margin: 0px 10px 0px 10px;
+        width: 140px;
+        height: 368px;
+    }
+    .bold {
+        font-weight: bold;
+        margin-top: 5px;
+    }
+    .wins {
+        font-size: 150%;
+        font-weight: bold;
+        margin-top: 8px;
+    }
+    .button {
+        text-align: center;
+        border: 1px solid orangered;
+        border-radius: 50px;
+        margin: 5px auto 5px auto;
+        width: 100px;
+        height: 100px;
+    }
+    .fightBox {
+        background-color: purple;
+        float: left;
+        text-align: center;
+        border: 1px solid black;
+        margin: 0px 15px 0px 15px;
+        width: 400px;
+        height: 368px;
+    }
+    .result {
+        font-size: 200%;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+    #winDisplay {
+        border: 1px solid black;
+        border-radius: 10px;
+        margin: 15px auto 10px auto;
+        width: 200px;
+        height: 200px;
+    }
+    .rock {
+        background: url("../images/rock.jpg");
+        background-size: 200px 200px;
+    }
+    .paper {
+        background: url("../images/paper.jpg");
+        background-size: 200px 200px;
+    }
+    .scissors {
+        background: url("../images/scissors.jpg");
+        background-size: 200px 200px;
+    }
+    .none {
+        background: none;
+    }
+    .text {
+        margin-top: 42px;
+        background: lightgray;
+    }
