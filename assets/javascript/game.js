@@ -13,6 +13,7 @@ $(document).ready(function(){
     var p2scissors = false;
     var p2pick = "";
 
+// Player On-Clicks
     $("#rock1").on("click", function(){
         $("#winner").text("");
         $("#winDisplay").attr("class", "none");
@@ -21,7 +22,6 @@ $(document).ready(function(){
         p1scissors = false;
         p1pick = "Rock";
         gameplay();
-        console.log(p1rock);
     });
 
     $("#paper1").on("click", function(){
@@ -32,7 +32,6 @@ $(document).ready(function(){
         p1scissors = false;
         p1pick = "Paper";
         gameplay();
-        console.log(p1paper);
     });
 
     $("#scissors1").on("click", function(){
@@ -43,7 +42,6 @@ $(document).ready(function(){
         p1rock = false;
         p1pick = "Scissors";
         gameplay();
-        console.log(p1scissors);
     });
 
     $("#rock2").on("click", function(){
@@ -54,7 +52,6 @@ $(document).ready(function(){
         p2scissors = false;
         p2pick = "Rock";
         gameplay();
-        console.log(p2rock);
     });
 
     $("#paper2").on("click", function(){
@@ -65,7 +62,6 @@ $(document).ready(function(){
         p2scissors = false;
         p2pick = "Paper";
         gameplay();
-        console.log(p2paper);
     });
 
     $("#scissors2").on("click", function(){
@@ -76,9 +72,9 @@ $(document).ready(function(){
         p2paper = false;
         p2pick = "Scissors";
         gameplay();
-        console.log(p2scissors);
     });
 
+// Rock, Paper, Scissors Gameplay
 function gameplay () {
     if ((p1paper === true && p2rock === true) || (p1rock === true && p2scissors === true) || (p1scissors === true && p2paper === true)) {
         $("#winner").text("Player 1 with " + p1pick);
@@ -91,6 +87,7 @@ function gameplay () {
         } else if (p1scissors === true) {
             $("#winDisplay").attr("class", "scissors")
         }
+        saveFirebase();
         clear();
     } else if ((p2paper === true && p1rock === true) || (p2rock === true && p1scissors === true) || (p2scissors === true && p1paper === true)) {
         $("#winner").text("Player 2 with " + p2pick);
@@ -103,6 +100,7 @@ function gameplay () {
         } else if (p2scissors === true) {
             $("#winDisplay").attr("class", "scissors")
         }
+        saveFirebase();
         clear();
     } else if ((p1paper === true && p2paper === true) || (p1rock === true && p2rock === true) || (p1scissors === true && p2scissors === true)) {
         $("#winner").text("Tie! Pick Again");
@@ -113,10 +111,12 @@ function gameplay () {
         } else if (p1scissors === true) {
             $("#winDisplay").attr("class", "scissors")
         }
+        saveFirebase();
         clear();
     }
 }
 
+// Reset Choices
 function clear () {
     p1rock = false;
     p1paper = false;
@@ -128,5 +128,45 @@ function clear () {
     p2scissors = false;
     p2pick = "";
 }
+// Firebase Configuration
+var config = {
+    apiKey: "AIzaSyCAd0iWhWhiLsdwLSdnRdLE0DFhWE3M9HQ",
+    authDomain: "rock-paper-scissors-41024.firebaseapp.com",
+    databaseURL: "https://rock-paper-scissors-41024.firebaseio.com",
+    projectId: "rock-paper-scissors-41024",
+    storageBucket: "rock-paper-scissors-41024.appspot.com",
+    messagingSenderId: "109194553390"
+    };
+    firebase.initializeApp(config);
+
+    var database = firebase.database();
+
+function saveFirebase () {
+    database.ref("/Player1").set({
+        P1WinCount: p1wins,
+        P1Choice: p1pick 
+    });
+    console.log(p1pick)
+    
+    database.ref("/Player2").set({
+        P2WinCount: p2wins,
+        P2Choice: p2pick 
+    });
+    console.log(p2pick)
+};
+  
+database.ref("/Player1").on("value", function(snapshot) {
+        p1wins = snapshot.val().P1WinCount;
+        $("#p1-Wins").text(p1wins)
+    }, function(errorObject) {
+        console.log("The read failed: " + errorObject.code);
+    });
+
+database.ref("/Player2").on("value", function(snapshot) {
+        p2wins = snapshot.val().P2WinCount;
+        $("#p2-Wins").text(p2wins)
+    }, function(errorObject) {
+        console.log("The read failed: " + errorObject.code);
+    });
 
 });

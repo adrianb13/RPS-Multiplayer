@@ -18,8 +18,8 @@ header {
         background-color: lightgray;
         font-size: 120%;
         margin: 5px auto 5px auto;
-        padding: 10px;
-        width: 700px;
+        padding: 20px;
+        width: 600px;
     }
     .playBox {
         background-color: black;
@@ -96,3 +96,17 @@ header {
         margin-top: 42px;
         background: lightgray;
     }
+footer {
+    text-align: center;
+    color: blue;
+    border-top: 1px solid black;
+    background-color: black;
+    margin: 0px;
+    padding: 5px;
+}
+a:link, a:visited, a:focus, a:hover, a:active {
+    text-decoration: underline;
+    color: blue;
+}
+
+    
