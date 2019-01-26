@@ -80,14 +80,17 @@ header {
     .rock {
         background: url("../images/rock.jpg");
         background-size: 200px 200px;
+        background-position: center;
     }
     .paper {
         background: url("../images/paper.jpg");
         background-size: 200px 200px;
+        background-position: center;
     }
     .scissors {
         background: url("../images/scissors.jpg");
         background-size: 200px 200px;
+        background-position: center;
     }
     .none {
         background: none;
@@ -96,7 +99,29 @@ header {
         margin-top: 42px;
         background: lightgray;
     }
-footer {
+    .width {
+        width: 600px;
+        margin: 5px auto 5px auto;
+
+    }
+    .chatroom {
+        background-color: lightgray;
+        border: 1px solid black;
+        margin: 5px auto 5px auto;
+        width: 600px;
+        height: 50px;
+    }
+    #chatbox {
+        background-color: lightgray;
+        border: 1px solid black;
+        margin: 1px auto 5px auto;
+        padding: 5px;
+        width: 400px;
+        height: 10px;
+        outline: none;
+    }
+
+    footer {
     text-align: center;
     color: blue;
     border-top: 1px solid black;

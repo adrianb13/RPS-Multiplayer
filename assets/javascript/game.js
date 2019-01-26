@@ -146,27 +146,46 @@ function saveFirebase () {
         P1WinCount: p1wins,
         P1Choice: p1pick 
     });
-    console.log(p1pick)
     
     database.ref("/Player2").set({
         P2WinCount: p2wins,
         P2Choice: p2pick 
     });
-    console.log(p2pick)
+
+    database.ref("/Chat").set({
+        GameChat: convo
+    });
 };
   
 database.ref("/Player1").on("value", function(snapshot) {
         p1wins = snapshot.val().P1WinCount;
-        $("#p1-Wins").text(p1wins)
+        $("#p1-Wins").text(p1wins);
     }, function(errorObject) {
         console.log("The read failed: " + errorObject.code);
     });
 
 database.ref("/Player2").on("value", function(snapshot) {
         p2wins = snapshot.val().P2WinCount;
-        $("#p2-Wins").text(p2wins)
+        $("#p2-Wins").text(p2wins);
     }, function(errorObject) {
         console.log("The read failed: " + errorObject.code);
     });
+
+database.ref("/Chat").on("value", function(snapshot) {
+        convo = snapshot.val().GameChat;
+        $("#chatdisplay").text(convo);
+    }, function(errorObject) {
+        console.log("The read failed: " + errorObject.code);
+    });
+
+// Gamechat function
+$("#send").on("click", function chat(){ 
+    var convo = $("#chatbox").val().trim();
+    $("#chatdisplay").append(convo + "<br>");
+    $("#chatbox").val("");
+    database.ref("/Chat").push({
+        GameChat : convo
+    });
+});
 
 });
